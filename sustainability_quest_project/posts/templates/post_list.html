@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Post List</h1>
+
+{% for post in posts %}
+<div class="post">
+  <h2>{{ post.name }}</h2>
+  <!-- <p>{{ post.description }}</p> -->
+
+  {% if post.photo %}
+  <img src="{{ post.photo.url }}" class="container-fluid"
+    style="height: 10cm; width: 8cm; padding:3px; border-radius:5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);" />
+    <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary">Open</a>
+
+  {% endif %}
+  <a href="{% url 'update_post' pk=post.pk %}">Edit</a>
+  <a href="{% url 'delete_post' pk=post.pk %}">Delete</a>
+  <a href="{% url 'post_list' %}">Back to Post List</a>
+</div>
+{% endfor %}
+<a href="{% url 'create_post' %}">Create Post</a>
+{% endblock %}

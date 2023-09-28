@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if post is not null %}
+<h1>{{ post.name }}</h1>
+{% if post.photo %}
+  <img src="{{ post.photo.url }}" class="container-fluid"
+    style="height: 10cm; width: 8cm; padding:3px; border-radius:5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);" />
+  {% endif %}
+<p>{{ post.description }}</p>
+
+<a href="{% url 'update_post' pk=post.pk %}">Edit</a>
+<a href="{% url 'delete_post' pk=post.pk %}">Delete</a>
+<a href="{% url 'post_list' %}">Back to Post List</a>
+{% endif %}
+{% endblock %}
