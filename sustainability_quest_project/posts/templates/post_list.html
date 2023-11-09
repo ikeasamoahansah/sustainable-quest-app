@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+<h1
+  class="text-white bg-secondary p-2 mb-0 btn-outline-warning"
+  style="width: 100%"
+>
+  The Hello World! blog page
+</h1>
+<a href="{% url 'create_post' %}" class="m-3 bg-secondary-subtle p-2">+ BLOG</a>
+<div class="row p-4 container p-1 flex-wrap blog border-warning-subtle">
+  {% for post in posts %}
+
+  <div class="bg-white font-monospace p-1 col-lg-3 col-md-6 col-sm-12">
+    <a
+      href="{% url 'post_detail' pk=post.pk %}"
+      class="m-2"
+      onmouseover="this.style.color='white';"
+      onmouseout="this.style.color='black';"
+    >
+      <!-- <p>{{ post.description }}</p> -->
+
+      {% if post.photo %}
+      <img src="{{ post.photo.url }}" class="card-img-top" />
+
+      <h2 class="card-footer bg-secondary p-2 shadow-md">{{ post.name }}</h2>
+
+      {% endif %}
+    </a>
+  </div>
+  {% endfor %} {% endblock %}
+</div>

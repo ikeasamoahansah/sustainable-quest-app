@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if goal is not null %}
+<div class="container-fluid p-1 p-lg-5">
+<img src="{{ goal.image2.url }}" alt="" class="mx-auto" style="max-height:400px;">
+<div class="bg-light-subtle blog p-lg-5 m-lg-5 p-sm-1" style="padding: 10px;">
+  <h1 class="font-monospace p-2 mb-1 bg-primary-subtle shadow-sm" style="text-align: left; font-size: large; border-left: 1px solid black; border-bottom: 1px solid black;">{{ goal.title }}</h1>
+  <p class="bg-light-subtle shadow-sm ps-5 pe-5 pt-3 p2 mt-2 rounded-1 mb-1">{{ goal.content1 }}</p>
+  {% if goal.photo %}
+  <img src="{{ goal.image1.url }}" class="blog-img d-flex mx-auto rounded-1 m-1" style="max-height: 500px;" />
+  {% endif %}
+ <p class="bg-light-subtle shadow-sm p-3 mt-2 rounded-1 mb-5">{{ goal.content2 }}</p>
+
+</div>
+{% endif %}
+{% endblock %}

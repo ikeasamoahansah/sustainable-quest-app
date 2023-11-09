@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if not request.user.is_authenticated %}
+<div class="credentials p-5" style=" display: flex;
+align-items: center;
+justify-content: center;
+height: 100vh;
+">
+    
+    <form class="bg-secondary-subtle p-5 rounded-1 shadow-sm" method="POST">
+        <h2 class="text-secondary pb-3">Login</h2>
+        {% csrf_token %}
+        {% if error %}
+        <p style="color:red;">{{error}}</p>
+        {% endif %}
+        <div>
+            <input class="rounded-5 ps-4" type="text" placeholder="username" name="username" required />
+        </div>
+        <br />
+        <div>
+            <input class="rounded-5 ps-4" type="password" placeholder="password" name="password" required />
+        </div>
+        <br />
+        <button class="bg-light-subtle shadow-sm rounded-5 ms-auto" type="submit"><svg width="45px" height="45px" viewBox="-12 -12 48.00 48.00" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8.90039 7.56023C9.21039 3.96023 11.0604 2.49023 15.1104 2.49023H15.2404C19.7104 2.49023 21.5004 4.28023 21.5004 8.75023V15.2702C21.5004 19.7402 19.7104 21.5302 15.2404 21.5302H15.1104C11.0904 21.5302 9.24039 20.0802 8.91039 16.5402" stroke="#0060d6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <g opacity="0.4"> <path d="M2 12H14.88" stroke="#0060d6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12.6504 8.65039L16.0004 12.0004L12.6504 15.3504" stroke="#0060d6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg></button>
+    </form>
+    {% else %}
+   <p>Already logged in, Logout? <a href="/logout/">Logout</a></p>
+</div> 
+{% endif %}
+{% endblock %}

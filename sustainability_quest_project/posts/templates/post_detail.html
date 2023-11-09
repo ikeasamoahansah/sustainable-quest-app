@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if post is not null %}
+<div class="shadow-sm bg-secondary-subtle blog" style="padding: 10px;">
+  <h1 class="font-monospace p-2 mb-1 bg-dark-subtle shadow-sm" style="text-align: left; font-size: large; border-left: 1px solid black; border-bottom: 1px solid black;">{{ post.name }}</h1>
+  {% if post.photo %}
+  <img src="{{ post.photo.url }}" class="blog-img d-flex mx-auto rounded-1" style="max-height: 500px;" />
+  {% endif %}
+  <p class="bg-light-subtle shadow-sm p-3 mt-2 rounded-1 mb-5">{{ post.description }}</p>
+
+  <div class="mx-auto accordion-body bg-danger-subtle p-2">
+  <a href="{% url 'update_post' pk=post.pk %}">Edit</a>
+  <a href="{% url 'delete_post' pk=post.pk %}">Delete</a>
+  <a href="{% url 'post_list' %}">Back</a></div>
+  
+</div>
+{% endif %}
+{% endblock %}

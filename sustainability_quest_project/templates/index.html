@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="bg-secondary shadow-lg p-2 mb-5 text-white" style="width: 100%; font-size: larger;"><h1>Posts</h1></div>
+<div class="row container">
+    {% for task in tasks %}
+    <div class="col-lg-3 col-md-4 col-sm-12 h-50 mb-3">
+        <div class="min-w-fit shadow-md">
+            <img src="{{ task.image }}" class="card-img-top h-25" alt="...">
+
+            <div class="card-body p-3">
+                <h5 class="card-title">{{ task.name }}</h5>
+                <p class="card-text">Rating: {{task.rating}} Country:{{task.country}}</p>
+                <a href="#" class="btn bg-secondary-subtle">Task</a>
+            </div>
+        </div>
+    </div>    
+    {% endfor %}
+</div>
+
+{% endblock %}z
